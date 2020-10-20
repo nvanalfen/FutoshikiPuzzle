@@ -70,13 +70,13 @@ class Box:
         if (x_b, y_b) in self.relations and (self.x, self.y) in box_b.relations:
             if self.relations[ (x_b, y_b) ] == "<":
                 if box_b.solved:
-                    self.possibilities = set( [ s for s in self.possibilities if s < max(box_b.value) ] )
+                    self.possibilities = set( [ s for s in self.possibilities if s < box_b.value ] )
                 else:
                     # All elements of self.possibilities must be smaller than the largest element of b.possibilities
                     self.possibilities = set( [ s for s in self.possibilities if s < max(box_b.possibilities) ] )
             elif self.relations[ (x_b, y_b) ] == ">":
                 if box_b.solved:
-                    self.possibilities = set( [ s for s in self.possibilities if s > max(box_b.value) ] )
+                    self.possibilities = set( [ s for s in self.possibilities if s > box_b.value ] )
                 else:
                     # All elements of self.possibilities must be larger than the smallest element of b.possibilities
                     self.possibilities = set( [ s for s in self.possibilities if s > min(box_b.possibilities) ] )
